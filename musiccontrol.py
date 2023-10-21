@@ -3,15 +3,13 @@ from pygame import mixer
 mixer.init()
 
 class Radio:
-    def __init__(self, music, volume = 0.2, repeat = False):
+    def __init__(self):
         
-        self.music = music
-        self.volume = volume
-        self.repeat = repeat
+        self.volume = 0.1
         
-    def play(self):
+    def play(self, music):
         
-        mixer.music.load(self.music)
+        mixer.music.load(music)
         mixer.music.set_volume(self.volume)
         mixer.music.play(-1)
         
@@ -19,4 +17,4 @@ class Radio:
         
         mixer.music.stop()
         
-radio = Radio("musicas/Menu.wav")
+radio = Radio()

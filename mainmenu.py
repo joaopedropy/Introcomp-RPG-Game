@@ -2,8 +2,8 @@ import pygame
 from pygame.locals import *
 from globals import window, cores
 from funções.functions import Button
-from pygame import mixer
 from musiccontrol import radio
+from credits import Credits
 
 
 pygame.init()
@@ -12,7 +12,7 @@ pygame.init()
 class Main: # a classe principal do menu
     def __init__(self):
         
-        radio.play()
+        radio.play("musicas/Menu.wav")
         self.running = True # define que o menu está ativo
         self.background = pygame.image.load("backgrounds/mainmenubg.png").convert() # Plano de fundo
         self.posicao_da_escolha = 0
@@ -60,14 +60,18 @@ class Main: # a classe principal do menu
             self.start_button
         ]
         
+    
+    def drawings(self):
+        
+        self.start_button.show()
+        self.credits_button.show()
+        self.quit_button.show()
         
     def start(self):
         while self.running:
             
             window.start(bg = self.background) # inicia a tela e coloca o plano de fundo
-            self.start_button.show()
-            self.credits_button.show()
-            self.quit_button.show()
+            self.drawings()
             
             for event in pygame.event.get(): # Eventos
                 if event.type == QUIT:
@@ -77,10 +81,10 @@ class Main: # a classe principal do menu
                     if event.key == K_UP: self.posicao_da_escolha += 1
                     if event.key == K_DOWN: self.posicao_da_escolha -= 1
                     
-                    if event.key == K_RETURN:
+                    if event.key == K_z:
                         match self.posicao_da_escolha:
                             case 3: self.running = False
-                            case 2: self.running = False
+                            case 2: Credits()
                             case 1: self.running = False
                     
             self.logic()
@@ -98,8 +102,6 @@ class Main: # a classe principal do menu
         for button in self.buttons:
             if button == self.buttons[self.posicao_da_escolha - 1]: button.hover = True
             else: button.hover = False
-        
-        # Iniciar o que tiver de ser iniciado
         
             
 main = Main()
