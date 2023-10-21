@@ -133,4 +133,4 @@ class Choose_Menu:              # Classe que será rodada a partir do Main Menu
             pygame.display.update()
 
 # Teste
-Choose_Menu()   # debugger
+# Choose_Menu()   # debugger
