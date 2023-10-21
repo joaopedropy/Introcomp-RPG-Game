@@ -23,3 +23,13 @@ class Window:
 
 window = Window()
 
+class Cores:
+    def __init__(self):
+        
+        self.azul_escuro = (7, 0, 77)
+        self.azul_claro = (33, 118, 255)
+        self.azul_esverdeado = (36, 95, 89)
+        self.vinho = (112, 22, 30)
+        self.verde_claro = (156, 227, 125)
+        
+cores = Cores()

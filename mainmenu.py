@@ -2,7 +2,8 @@ import pygame
 from pygame.locals import *
 from globals import window, cores
 from funções.functions import Button
-# from impmusicas import *
+from pygame import mixer
+from musiccontrol import radio
 
 
 pygame.init()
@@ -11,6 +12,7 @@ pygame.init()
 class Main: # a classe principal do menu
     def __init__(self):
         
+        radio.play()
         self.running = True # define que o menu está ativo
         self.background = pygame.image.load("backgrounds/mainmenubg.png").convert() # Plano de fundo
         self.posicao_da_escolha = 0
@@ -70,11 +72,17 @@ class Main: # a classe principal do menu
             for event in pygame.event.get(): # Eventos
                 if event.type == QUIT:
                     pygame.quit()
-                if event.type == KEYDOWN:
+                    
+                if event.type == KEYDOWN: # atualiza posição da escolha
                     if event.key == K_UP: self.posicao_da_escolha += 1
                     if event.key == K_DOWN: self.posicao_da_escolha -= 1
                     
-            
+                    if event.key == K_RETURN:
+                        match self.posicao_da_escolha:
+                            case 3: self.running = False
+                            case 2: self.running = False
+                            case 1: self.running = False
+                    
             self.logic()
             pygame.display.flip()
             
@@ -88,10 +96,8 @@ class Main: # a classe principal do menu
         
         # dar o highlight aos botões (hover)
         for button in self.buttons:
-            if button == self.buttons[self.posicao_da_escolha - 1]:
-                button.hover = True
-            else:
-                button.hover = False
+            if button == self.buttons[self.posicao_da_escolha - 1]: button.hover = True
+            else: button.hover = False
         
         # Iniciar o que tiver de ser iniciado
         
