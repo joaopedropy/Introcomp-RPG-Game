@@ -1,0 +1,43 @@
+
+
+MANUAL DO BOTÃO      ->      buttao = button()
+                                             
+primeiro é necessário criar a variável de um botão fora do loop
+example = button(pos = (200, 200), size = (100, 100), color = (255, 0, 0))
+    
+temos que necessariamente colocar esses 3 parâmetros
+    
+agora, dentro do loop iremos utilizar o update(), que irá desenhar o quadrado na tela e receberá (ou não) os seguintes parâmetros:
+    
+    destaque = (true or false)   ->    Basicamente habilitar ou não o outline
+    outline = (int)   ->   define a espessura do outline
+    outline_color = (color)   ->   define a cor do outline
+    rounded_edge = (int)   ->   define o arredondamento das bordas do botão
+        
+com isso, podemos dentro do loop, dar update no nosso botão
+    
+example.update()
+
+
+
+
+
+# ---------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+MANUAL DO WRITE       ->     texto = write()
+
+O write serve para escrever coisas na tela, recebendo como parâmetros o texto, posição, tamanho e cor
+pode ser mencionado antes do loop, tendo que utilizar a função update() depos, ou pode ser mecionado no próprio loop sem problema nenhum
+
+dos parâmetros temos:
+
+    text = (str)   ->   o texto que será exposto no jogo
+    pos = (x, y)   ->   a posição do CENTRO do texto
+    size = (int)   ->   o tamanho do texto
+    color = (color)   ->   a cor do texto
+    
+seu funcionamento se difere do botão apenas porque o método write pode ser chamado antes ou depois do loop
