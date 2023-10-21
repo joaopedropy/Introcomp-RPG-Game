@@ -3,32 +3,23 @@ from pygame.locals import *
 
 
 # A janela principal
-screen = pygame.display.set_mode((1024, 768))
-screen_x, screen_y = screen.get_width(), screen.get_height() 
-
-
-# Tudo o que for exibido
-display = pygame.Surface((screen_x, screen_y)).convert()
-
-# colocar o display na tela
-def screen_update():
-    screen.blit(display, (0, 0))
-    
-# escolhas
-class Escolhas:
+class Window:
     def __init__(self):
-        self.personagem1 = None
-        self.personagem2 = None
-        self.personagem3 = None
         
-escolhas = Escolhas()  # para poderem ser alteradas...
+        self.largura = 1024
+        self.altura = 768
+        self.screen = pygame.display.set_mode((self.largura, self.altura))
+        self.screen_color = (0, 0, 0)
+        self.display = pygame.Surface((self.largura, self.altura)).convert()
+        self.display_color = (0, 0, 0)
+        self.rect = self.display.get_rect()
+        
+    def start(self, bg = pygame.Surface((1024, 768))):
+        
+        self.screen.fill(self.screen_color)
+        self.screen.blit(self.display, (0, 0))
+        self.display.fill(self.display_color)
+        self.display.blit(bg, (0, 0))
 
-# Algumas cores principais (para facilitar minha vida)
-branco = (255, 255, 255)
-cinza = (100, 100, 100)
-preto = (0, 0, 0)
-vermelho = (255, 0, 0)
-amarelo = (255, 255, 0)
-verde = (0, 255, 0)
-azul = (0, 0, 255)
-rosa = (255, 0, 255)
+window = Window()
+

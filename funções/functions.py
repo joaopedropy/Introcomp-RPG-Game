@@ -5,22 +5,25 @@ from globals import *
 # ---------------------------------------------------------------------------------------------------------------------------------------------
 
 class button: # Classe que cria um botão onde quiser com posição, tamanho e cor  
-    def __init__(self, pos, size, color, nome=None):
+    def __init__(self, pos, size, color, text = '', corner_radius = 0, hover_color = (255, 255, 255)):
         
-        self.rect = pygame.Rect(pos, size)
-        self.rect.center = pos
-        self.color = color
-        self.original_color = color
+        self.pos = pos
         self.size = size
-        self.nome = nome
+        self.color = color
+        self.text = text
+        self.corner_radius = corner_radius
+        self.hover_color = hover_color
+        self.hover = False
         
-    def update(self, destaque = False, outline = 0, outline_color = (0, 0, 0), rounded_edge = 0): 
-        # Atualiza o botão dentro do loop, desenhando ele na tela 
-        # e alterando valores como Outline e borda arredondada
-        pygame.draw.rect(display, self.color, self.rect, 0, rounded_edge)   # desenhar o quadrado propriamente dito
-        if destaque:
-            pygame.draw.rect(display, outline_color, self.rect, outline, rounded_edge)   # quadrado do outline
-            
+        self.rect = pygame.Rect((0, 0), self.size)
+        self.rect.center = self.pos
+        
+    def show(self):
+        
+        if self.hover:
+            pygame.draw.rect(window.display, self.hover_color, self.rect, 0, self.corner_radius)
+        else:
+            pygame.draw.rect(window.display, self.color, self.rect, 0, self.corner_radius)
 
 # ---------------------------------------------------------------------------------------------------------------------------------------------
         
@@ -39,7 +42,7 @@ class write:
         
     def update(self):
         
-        display.blit(self.write, self.rect)
+        window.display.blit(self.write, self.rect)
         
 # ---------------------------------------------------------------------------------------------------------------------------------------------
 
