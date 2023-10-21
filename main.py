@@ -71,5 +71,3 @@ while True:
     # Atualizar a tela
     screen_update()
     pygame.display.flip()
-    
-print("Hello world")
