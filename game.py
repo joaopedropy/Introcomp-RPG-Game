@@ -35,12 +35,12 @@ class Game:
             window.start(bg = self.background)
             
             for event in pygame.event.get():
-                if event.type == pygame.QUIT:
-                    self.running = False
+                if event.type == pygame.QUIT: self.exit()
                 if event.type == pygame.KEYDOWN:
                     if event.key == K_RIGHT: self.escolha += 1
                     if event.key == K_LEFT: self.escolha -= 1
                     if event.key == K_z: self.selecionar_acao()
+                    if event.key == K_ESCAPE: self.exit()
                     
             if self.turno == "player atacando":
                 self.player_ataca()
@@ -199,3 +199,7 @@ class Game:
         for personagem in self.ordem_de_agilidade:
             print(f"{self.posição}º: {personagem.nome}")
             self.posição += 1
+            
+    def exit(self):
+        radio.play("musicas/menu.wav")
+        self.running = False
