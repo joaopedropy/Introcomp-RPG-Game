@@ -3,6 +3,7 @@ from pygame.locals import *
 from globals import *
 from funções.functions import Button, write
 from musicas.musiccontrol import radio
+from game import Game
 
 
 pygame.init()
@@ -156,10 +157,16 @@ class SelectMenu:
                 if event.type == QUIT:
                     self.confirming = False
                     self.running = False
+                    
+                    
                 if event.type == KEYDOWN:
                     if event.key == K_z: 
+                        escolhas.escolha1 = self.selected[0]
+                        escolhas.escolha2 = self.selected[1]
+                        escolhas.escolha3 = self.selected[2]
                         self.confirming = False
                         self.running = False
+                        Game()
                     elif event.key == K_x: 
                         self.confirming = False
                         self.running = False
@@ -179,3 +186,6 @@ class SelectMenu:
         
         radio.play("musicas/Menu.wav")
         self.running = False
+        
+
+# SelectMenu()

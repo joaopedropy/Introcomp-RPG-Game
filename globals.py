@@ -33,3 +33,11 @@ class Cores:
         self.verde_claro = (156, 227, 125)
         
 cores = Cores()
+
+class Escolhas:
+    def __init__(self):
+        self.escolha1 = ""
+        self.escolha2 = ""
+        self.escolha3 = ""
+        
+escolhas = Escolhas()

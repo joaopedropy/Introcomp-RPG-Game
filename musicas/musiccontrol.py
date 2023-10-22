@@ -5,7 +5,7 @@ mixer.init()
 class Radio:
     def __init__(self):
         
-        self.volume = 0.0
+        self.volume = 0.2
         
     def play(self, music):
         

@@ -183,12 +183,12 @@ class Caçador:
             self.manaV -= 6
 
 
-JMago = Mago("Bigodinho", 50, 15, 15, 6, 15, 2, 3, 5)
+JMago = Mago("BigodinhoA", 50, 15, 15, 6, 15, 2, 3, 5)
 
-JLadino = Ladino("Vitor", 45, 10, 10, 10, 0, 2, 2, 20)
+JLadino = Ladino("VitorA", 45, 10, 10, 10, 0, 2, 2, 20)
 
-JPaladino = Paladino("Mika", 80, 16, 16, 6, 6, 5, 5, 7)
+JPaladino = Paladino("MikaA", 80, 16, 16, 6, 6, 5, 5, 7)
 
-JSacerdote = Sacerdote("Dalila", 50, 18, 18, 2, 7, 3, 3, 4)
+JSacerdote = Sacerdote("DalilaA", 50, 18, 18, 2, 7, 3, 3, 4)
 
-JCaçador = Caçador("Daniel", 60, 9, 9, 7, 0, 4, 1, 15)
+JCaçador = Caçador("DanielA", 60, 9, 9, 7, 0, 4, 1, 15)
