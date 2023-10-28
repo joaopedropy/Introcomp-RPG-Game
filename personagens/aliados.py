@@ -159,7 +159,7 @@ class Caçador:
         self.agilidade = agilidade
         self.ataqueEspecial = "Caçar"
 
-    def ataque(self, inimigo):
+    def ataque1(self, inimigo):
         print(f"{self.nome} usa sua besta para atirar no inimigo, a flecha causa {CalculoDanoFisico(self.danoF, inimigo.defesaF)}")
         if self.manaV < self.manaM:
             self.manaV += 2

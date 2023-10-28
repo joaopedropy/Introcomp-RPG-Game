@@ -16,10 +16,10 @@ class SelectMenu:
         radio.play("musicas/Seleção.wav") # música da tela
         self.background = pygame.image.load("backgrounds/selectmenubg.png") # background
         
-        self.posicao_da_escolha = 1
+        self.posicao_da_escolha = 1  # Definir a escolha do player
         
         
-        self.mago = Button(   # Botão de start; definições
+        self.mago = Button(   # Botão de seleção; definições
             pos = (230, window.rect.centery - 100),
             size = (200, 200),
             color = cores.verde_claro,
@@ -32,7 +32,7 @@ class SelectMenu:
             text_hover_color = cores.verde_claro
         )
         
-        self.ladino = Button(   # Botão de start; definições
+        self.ladino = Button(   # Botão de seleção; definições
             pos = (500, window.rect.centery - 100),
             size = (200, 200),
             color = cores.verde_claro,
@@ -45,7 +45,7 @@ class SelectMenu:
             text_hover_color = cores.verde_claro
         )
         
-        self.paladino = Button(   # Botão de start; definições
+        self.paladino = Button(   # Botão de seleção; definições
             pos = (770, window.rect.centery - 100),
             size = (200, 200),
             color = cores.verde_claro,
@@ -58,7 +58,7 @@ class SelectMenu:
             text_hover_color = cores.verde_claro
         )
         
-        self.sacerdote = Button(   # Botão de start; definições
+        self.sacerdote = Button(   # Botão de seleção; definições
             pos = (365, window.rect.centery + 180),
             size = (200, 200),
             color = cores.verde_claro,
@@ -71,7 +71,7 @@ class SelectMenu:
             text_hover_color = cores.verde_claro
         )
         
-        self.cacador = Button(   # Botão de start; definições
+        self.cacador = Button(   # Botão de seleção; definições
             pos = (635, window.rect.centery + 180),
             size = (200, 200),
             color = cores.verde_claro,
@@ -84,57 +84,57 @@ class SelectMenu:
             text_hover_color = cores.verde_claro
         )
         
-        self.buttons = [
+        self.buttons = [   # Minha lista de botões
             self.mago,
             self.ladino,
             self.paladino,
             self.sacerdote,
             self.cacador
         ]
-        self.selected = []
+        self.selected = []  # Botões selecionados
         
         
         self.start() # inicia o loop principal
         
     def start(self):
         while self.running:
-            window.start(bg = self.background)
-            self.draw()
+            window.start(bg = self.background)  # Background
+            self.draw()  # Desenha tudo na tela
             
             
             for event in pygame.event.get():
                 if event.type == QUIT: self.exit() # evento de sair
                 if event.type == KEYDOWN:
-                    if event.key == K_LEFT: self.posicao_da_escolha -= 1
-                    elif event.key == K_RIGHT: self.posicao_da_escolha += 1
-                    elif event.key == K_z: self.select_character()
+                    if event.key == K_LEFT: self.posicao_da_escolha -= 1  # evento de alterar escohla
+                    elif event.key == K_RIGHT: self.posicao_da_escolha += 1   # evento de alterar escohla
+                    elif event.key == K_z: self.select_character()  # evento de escolher personagem
                     
                     
-            self.logic()
+            self.logic()  # lógica do menu de escolha
             pygame.display.flip()
             
             
     def select_character(self):
         
         for button in self.buttons:
-            if button == self.buttons[self.posicao_da_escolha - 1] and button not in self.selected:
+            if button == self.buttons[self.posicao_da_escolha - 1] and button not in self.selected:  # adicionar apenas se não estiver adicionado
                 self.selected.append(button)
             
     def logic(self):
         
         match self.posicao_da_escolha:
-            case 6: self.posicao_da_escolha = 1
-            case 0: self.posicao_da_escolha = 5
+            case 6: self.posicao_da_escolha = 1  # limitar entre 1 e 5
+            case 0: self.posicao_da_escolha = 5  # limitar entre 1 e 5
             
         for button in self.buttons:
             if button not in self.selected:
-                if button == self.buttons[self.posicao_da_escolha - 1]: button.hover = True
+                if button == self.buttons[self.posicao_da_escolha - 1]: button.hover = True # identificar o botão que está sendo escolhido
                 else: button.hover = False
             else: 
                 button.color = cores.azul_claro
                 button.hover = False
                 
-        if len(self.selected) == 3:
+        if len(self.selected) == 3:  # conclui a seleção de personagens
             self.confirm_selection()
             
             
@@ -142,7 +142,7 @@ class SelectMenu:
         
         self.confirming = True
         
-        while self.confirming:
+        while self.confirming:   # tela de "Você tem certeza?"
             
             window.start(bg = self.background)
             
@@ -174,7 +174,7 @@ class SelectMenu:
             pygame.display.update()
     
             
-    def draw(self):
+    def draw(self):  # tudo o que for desenhado vai aqui
         
         write("Escolha 3 personagens", (window.rect.centerx, window.rect.centery - 300), 55, (255, 255, 255))
         
@@ -182,10 +182,10 @@ class SelectMenu:
             button.show()
             
             
-    def exit(self):
+    def exit(self):  # sair desta tela
         
         radio.play("musicas/Menu.wav")
         self.running = False
         
 
-# SelectMenu()
+SelectMenu()
